@@ -68,15 +68,16 @@ function draw() {
   background("skyblue");
   
   if (ground.x <= 0){
-    ground.x = 1360;
+    ground.x = 640;
   }
   
   if (gameState === IDLE){
     
     ground.velocityX = PIPESPEED;
     
-    textSize(20);
-    text("Space to flap.", 200, 200);
+    textSize(widHeiAverage/24);
+    textAlign(CENTER);
+    text("Space to flap.", windowWidth/2, windowHeight*0.3);
     
     bird.velocityY = (Math.sin(World.frameCount*0.2)*5);
     
@@ -148,11 +149,11 @@ function draw() {
     fill("white");
     textAlign(CENTER);
     textSize(widHeiAverage/48);
-    text("You went through " + score + " pipes", 300, 200);
+    text("You went through " + score + " pipes", windowWidth/2, windowHeight*0.3);
     textSize(widHeiAverage/96);
-    text("Click R to restart.", 300, 250);
+    text("Click R to restart.", windowWidth/2, windowHeight*0.5);
     textSize(widHeiAverage/80);
-    text("Your best score: " + highscore, 300, 300);
+    text("Your best score: " + highscore, windowWidth/2, windowHeight*0.7);
     
     if (keyWentDown("r")){
       restart();
@@ -161,9 +162,9 @@ function draw() {
 }
 
 function pipe() {
-  var r = random(windowHeight*-0.2, windowHeight*0.4);
+  var r = random(windowHeight*-0.4, windowHeight*0.25);
   
-  scoreCol = createSprite(windowWidth*1.1, r+400, 10, windowHeight/6);
+  scoreCol = createSprite(windowWidth*1.1, r+400, 10, windowHeight/2);
   scoreCol.shapeColor = "skyblue";
   scoreCol.velocityX = PIPESPEED;
   scoreCol.lifetime = (windowWidth*1.1)/PIPESPEED;
